@@ -78,6 +78,64 @@ $msmois[] = $msmars;
 $msmois[] = $msavril;
 $msmois[] = $msmai;
 
+$querycofev = "SELECT nb,t2.Date FROM (SELECT Count(IDTran) as nb,`Date` FROM `transition` WHERE `Titre`= 'Connexion' AND `Utilisateur` ='".$name."' GROUP BY Date) as t1 Right outer Join (SELECT DISTINCT Date FROM transition) as t2 on t1.Date = t2.Date WHERE t2.date BETWEEN '2009-02-01' AND '2009-02-31'";
+$querycomars = "SELECT nb,t2.Date FROM (SELECT Count(IDTran) as nb,`Date` FROM `transition` WHERE `Titre`= 'Connexion' AND `Utilisateur` ='".$name."' GROUP BY Date) as t1 Right outer Join (SELECT DISTINCT Date FROM transition) as t2 on t1.Date = t2.Date WHERE t2.date BETWEEN '2009-03-01' AND '2009-03-31'";
+$querycoavr = "SELECT nb,t2.Date FROM (SELECT Count(IDTran) as nb,`Date` FROM `transition` WHERE `Titre`= 'Connexion' AND `Utilisateur` ='".$name."' GROUP BY Date) as t1 Right outer Join (SELECT DISTINCT Date FROM transition) as t2 on t1.Date = t2.Date WHERE t2.date BETWEEN '2009-04-01' AND '2009-04-31'";
+$querycomai = "SELECT nb,t2.Date FROM (SELECT Count(IDTran) as nb,`Date` FROM `transition` WHERE `Titre`= 'Connexion' AND `Utilisateur` ='".$name."' GROUP BY Date) as t1 Right outer Join (SELECT DISTINCT Date FROM transition) as t2 on t1.Date = t2.Date WHERE t2.date BETWEEN '2009-05-01' AND '2009-05-31'";
+
+$nbcofev = array();
+$datecofev = array();
+$nbcomars = array();
+$datecomars= array();
+$nbcoavr = array();
+$datecoavr = array();
+$nbcomai = array();
+$datecomai = array();
+
+$resulcofev = $conn->query($querycofev);
+while($rowcofev = $resulcofev -> fetch_row()){
+	$nbcofev[] = intval($rowcofev[0]);
+	$datecofev[] = $rowcofev[1];
+}
+$resulcomars = $conn->query($querycomars);
+while($rowcomars = $resulcomars -> fetch_row()){
+	$nbcomars[] = intval($rowcomars[0]);
+	$datecomars[] = $rowcomars[1];
+}
+$resulcoavr = $conn->query($querycoavr);
+while($rowcoavr = $resulcoavr -> fetch_row()){
+	$nbcoavr[] = intval($rowcoavr[0]);
+	$datecoavr[] = $rowcoavr[1];
+}
+$resulcomai = $conn->query($querycomai);
+while($rowcomai = $resulcomai -> fetch_row()){
+	$nbcomai[] = intval($rowcomai[0]);
+	$datecomai[] = $rowcomai[1];
+}
+$cofevrier = array();
+$comars = array();
+$coavril = array();
+$comai = array();
+
+$cofevrier[0] = $nbcofev;
+$cofevrier[1] = $datecofev;
+
+$comars[0] = $nbcomars;
+$comars[1] = $datecomars;
+
+$coavril[0] = $nbcoavr;
+$coavril[1] = $datecoavr;
+
+$comai[0] = $nbcomai;
+$comai[1] = $datecomai;
+
+$comois = array();
+$comois[] = $cofevrier;
+$comois[] = $comars;
+$comois[] = $coavril;
+$comois[] = $comai;
+
+
 
 
 

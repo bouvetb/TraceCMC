@@ -1,9 +1,9 @@
-graphmess(0);
-function graphmess(mois){
-	Highcharts.chart('container3', {
+graphco(0);
+function graphco(mois){
+	Highcharts.chart('container4', {
 
     title: {
-        text: 'Messages pendant le mois '
+        text: 'Connexions pendant le mois '
     },
     chart :{
     	width : 800
@@ -11,12 +11,12 @@ function graphmess(mois){
 
     yAxis: {
         title: {
-            text: 'Nombres de Messages'
+            text: 'Nombres de Connexions'
         }
     },
 
     xAxis: {
-        categories: tab_ms_moi[mois][1],
+        categories: tab_co_moi[mois][1],
         crosshair: true
     },
 
@@ -36,8 +36,8 @@ function graphmess(mois){
     },
 
     series: [{
-        name: 'Messages',
-        data: tab_ms_moi[mois][0],
+        name: 'Connexions',
+        data: tab_co_moi[mois][0],
     }],
 
     responsive: {

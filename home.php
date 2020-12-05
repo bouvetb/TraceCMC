@@ -25,7 +25,8 @@ include "requetes.php";
 		var tab_temp_date_connex = <?php echo json_encode($dateconnex)?>;
 		var tab_date_connex = [];
 		tab_temp_date_connex.forEach(element => tab_date_connex.push(intToMonth(element)));
-		var tab_ms_moi = <?php echo json_encode($msmois);?>
+		var tab_ms_moi = <?php echo json_encode($msmois);?>;
+		var tab_co_moi = <?php echo json_encode($comois);?>
 
 
 	</script>
@@ -55,22 +56,24 @@ include "requetes.php";
 	</form>
 	</div>
 	<div id=container></div>
-	<div style="float: center;">
-	
-	<select onchange="graph(value);">
-		<option value = 0>Fevrier</option>
-		<option value = 1>Mars</option>
-		<option value = 2>Avril</option>
-		<option value = 3>Mai</option>
-	</select>
-	<div id=container3></div>
+	<div style="text-align: center;">
+		<select onchange="graphmess(value);graphco(value);">
+			<option value = 0>Fevrier</option>
+			<option value = 1>Mars</option>
+			<option value = 2>Avril</option>
+			<option value = 3>Mai</option>
+		</select>
+	</div>
+		
+	<div style="text-align: center;">
+		<div id=container3 style="display: inline-block;"></div>
+		<div id=container4 style="display: inline-block;"></div>
 	</div>
 	<div id=container2></div>
-	
-	
-	<div id=container4></div>
+
 	<script type="text/javascript" src="./chart1.js"></script>
 	<script type="text/javascript" src="./chart2.js"></script>
 	<script type="text/javascript" src="./chart3.js"></script>
+	<script type="text/javascript" src="./chart4.js"></script>
 </BODY>
 </HTML>
