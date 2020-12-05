@@ -22,10 +22,10 @@ while($rowConnnex = $resultConnex -> fetch_row()){
 	$nbconnex[] = $rowConnnex[0];
 	$dateconnex[] = $rowConnnex[1];
 }
-$queryfev = "SELECT nb,t2.Date FROM (SELECT Count(IDTran) as nb,`Date` FROM `transition` WHERE `Titre`= 'Poster un nouveau message' AND `Utilisateur` ='".$name."' GROUP BY Date) as t1 Right outer Join (SELECT DISTINCT Date FROM transition) as t2 on t1.Date = t2.Date WHERE t2.date BETWEEN '2009-02-01' AND '2009-02-31'";
-$querymars = "SELECT nb,t2.Date FROM (SELECT Count(IDTran) as nb,`Date` FROM `transition` WHERE `Titre`= 'Poster un nouveau message' AND `Utilisateur` ='".$name."' GROUP BY Date) as t1 Right outer Join (SELECT DISTINCT Date FROM transition) as t2 on t1.Date = t2.Date WHERE t2.date BETWEEN '2009-03-01' AND '2009-03-31'";
-$queryavr = "SELECT nb,t2.Date FROM (SELECT Count(IDTran) as nb,`Date` FROM `transition` WHERE `Titre`= 'Poster un nouveau message' AND `Utilisateur` ='".$name."' GROUP BY Date) as t1 Right outer Join (SELECT DISTINCT Date FROM transition) as t2 on t1.Date = t2.Date WHERE t2.date BETWEEN '2009-04-01' AND '2009-04-31'";
-$querymai = "SELECT nb,t2.Date FROM (SELECT Count(IDTran) as nb,`Date` FROM `transition` WHERE `Titre`= 'Poster un nouveau message' AND `Utilisateur` ='".$name."' GROUP BY Date) as t1 Right outer Join (SELECT DISTINCT Date FROM transition) as t2 on t1.Date = t2.Date WHERE t2.date BETWEEN '2009-05-01' AND '2009-05-31'";
+$queryfev = "SELECT nb,t2.Date FROM (SELECT Count(IDTran) as nb,`Date` FROM `transition` WHERE (`Titre`= 'Poster un nouveau message' OR `Titre`= 'Répondre à un message') AND `Utilisateur` ='".$name."' GROUP BY Date) as t1 Right outer Join (SELECT DISTINCT Date FROM transition) as t2 on t1.Date = t2.Date WHERE t2.date BETWEEN '2009-02-01' AND '2009-02-31'";
+$querymars = "SELECT nb,t2.Date FROM (SELECT Count(IDTran) as nb,`Date` FROM `transition` WHERE (`Titre`= 'Poster un nouveau message' OR `Titre`= 'Répondre à un message') AND `Utilisateur` ='".$name."' GROUP BY Date) as t1 Right outer Join (SELECT DISTINCT Date FROM transition) as t2 on t1.Date = t2.Date WHERE t2.date BETWEEN '2009-03-01' AND '2009-03-31'";
+$queryavr = "SELECT nb,t2.Date FROM (SELECT Count(IDTran) as nb,`Date` FROM `transition` WHERE (`Titre`= 'Poster un nouveau message' OR `Titre`= 'Répondre à un message') AND `Utilisateur` ='".$name."' GROUP BY Date) as t1 Right outer Join (SELECT DISTINCT Date FROM transition) as t2 on t1.Date = t2.Date WHERE t2.date BETWEEN '2009-04-01' AND '2009-04-31'";
+$querymai = "SELECT nb,t2.Date FROM (SELECT Count(IDTran) as nb,`Date` FROM `transition` WHERE (`Titre`= 'Poster un nouveau message' OR `Titre`= 'Répondre à un message') AND `Utilisateur` ='".$name."' GROUP BY Date) as t1 Right outer Join (SELECT DISTINCT Date FROM transition) as t2 on t1.Date = t2.Date WHERE t2.date BETWEEN '2009-05-01' AND '2009-05-31'";
 $nbmessfev = array();
 $datemessfev = array();
 $nbmessmars = array();

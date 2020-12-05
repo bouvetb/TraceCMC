@@ -37,8 +37,8 @@ include "requetes.php";
 <BODY>
 	<div id="header">
 			<H1>Indicateurs traces CMC</H1>
-			<a>Indicateur 1</a>
-			<a>Indicateur 2 </a>
+			<a href="#">Indicateur 1</a>
+			<a href="./indicateur2.php">Indicateur 2 </a>
 	</div>
 	<div id="menu">
 		<form method="post" action="home.php">
@@ -51,6 +51,7 @@ include "requetes.php";
 				echo "<label for='".$r[0]."'>".$r[0]."</label>";
 				echo "</div>";
 			} 
+			mysqli_close($conn);
 			?>
 			<button>Valider</button>
 	</form>
