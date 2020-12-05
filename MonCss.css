@@ -1,0 +1,15 @@
+#menu
+{
+	float : left;
+	background-color : lightblue;
+	height: 100%
+}
+#header
+{
+	background-color : lightblue;
+	overflow : hidden;
+	text-align: center;
+}
+body{
+	margin: 0px;
+}
