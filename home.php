@@ -26,7 +26,22 @@ include "requetes.php";
 		var tab_date_connex = [];
 		tab_temp_date_connex.forEach(element => tab_date_connex.push(intToMonth(element)));
 		var tab_ms_moi = <?php echo json_encode($msmois);?>;
-		var tab_co_moi = <?php echo json_encode($comois);?>
+		var tab_co_moi = <?php echo json_encode($comois);?>;
+
+		var tab_temp_nbRep = <?php echo json_encode($nbreponse);?>;
+		var tab_nbRep=[];
+		tab_temp_nbRep.forEach(element=> tab_nbRep.push(parseInt(element)));
+		var tab_tempDateRep=<?php echo json_encode($datereponse);?>;
+		var tab_dateRep=[];
+		tab_tempDateRep.forEach(element => tab_dateRep.push(intToMonth(element)));
+
+		var tab_temp_nbConsult = <?php echo json_encode($nbConsult);?>;
+		var tab_nbConsult=[];
+		tab_temp_nbConsult.forEach(element=> tab_nbConsult.push(parseInt(element)));
+		var tab_tempDateConsult=<?php echo json_encode($dateConsult);?>;
+		var tab_dateConsult=[];
+		tab_tempDateConsult.forEach(element => tab_dateConsult.push(intToMonth(element)));
+		var tab_consultMois=<?php echo json_encode($consultmois);?>;
 
 
 	</script>
@@ -58,7 +73,7 @@ include "requetes.php";
 	</div>
 	<div id=container></div>
 	<div style="text-align: center;">
-		<select onchange="graphmess(value);graphco(value);">
+		<select onchange="graphmess(value);graphco(value);graphconsult(value);">
 			<option value = 0>Fevrier</option>
 			<option value = 1>Mars</option>
 			<option value = 2>Avril</option>
@@ -71,10 +86,20 @@ include "requetes.php";
 		<div id=container4 style="display: inline-block;"></div>
 	</div>
 	<div id=container2></div>
+	<div id=container5></div>
+
+
+	<div style="text-align: center";>
+		<div id=container6 style="display: inline-block;"></div>
+		<div id=container7 style="display: inline-block;"></div>
+	</div>
 
 	<script type="text/javascript" src="./chart1.js"></script>
 	<script type="text/javascript" src="./chart2.js"></script>
 	<script type="text/javascript" src="./chart3.js"></script>
 	<script type="text/javascript" src="./chart4.js"></script>
+	<script type="text/javascript" src="./chart5.js"></script>
+	<script type="text/javascript" src="./chart6.js"></script>
+	<script type="text/javascript" src="./chart7.js"></script>
 </BODY>
 </HTML>
