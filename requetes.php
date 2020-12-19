@@ -22,11 +22,31 @@ while($rowConnnex = $resultConnex -> fetch_row()){
 	$nbconnex[] = $rowConnnex[0];
 	$dateconnex[] = $rowConnnex[1];
 }
+
+$queryReponseMois = "SELECT SUM(nb),MONTH(t2.Date) FROM(SELECT Count(IDTran) as nb,`Date` FROM `transition` WHERE (`Titre`= 'Répondre à un message') AND `Utilisateur`='".$name."' GROUP BY Date) as t1 Right outer Join (SELECT DISTINCT Date FROM transition) as t2 on t1.Date = t2.Date GROUP BY MONTH(t2.Date) ";
+$resultReponseMois=$conn->query($queryReponseMois);
+$nbreponse=array();
+$datereponse=array();
+while($rowReponse=$resultReponseMois -> fetch_row()){
+	$nbreponse[]=$rowReponse[0];
+	$datereponse[]=$rowReponse[1];
+}
+
+$queryConsultationMois = "SELECT SUM(nb),MONTH(t2.Date) FROM(SELECT Count(IDTran) as nb,`Date` FROM `transition` WHERE (`Titre`= 'Afficher une structure (cours/forum)') AND `Utilisateur`='".$name."' GROUP BY Date) as t1 Right outer Join (SELECT DISTINCT Date FROM transition) as t2 on t1.Date = t2.Date GROUP BY MONTH(t2.Date) ";
+$resultConsultationMois=$conn->query($queryConsultationMois);
+$nbConsult=array();
+$dateConsult=array();
+while($rowConsult=$resultConsultationMois -> fetch_row()){
+	$nbConsult[]=$rowConsult[0];
+	$dateConsult[]=$rowConsult[1];
+}
+
 $queryfev = "SELECT nb,t2.Date FROM (SELECT Count(IDTran) as nb,`Date` FROM `transition` WHERE (`Titre`= 'Poster un nouveau message' OR `Titre`= 'Répondre à un message') AND `Utilisateur` ='".$name."' GROUP BY Date) as t1 Right outer Join (SELECT DISTINCT Date FROM transition) as t2 on t1.Date = t2.Date WHERE t2.date BETWEEN '2009-02-01' AND '2009-02-31'";
 $querymars = "SELECT nb,t2.Date FROM (SELECT Count(IDTran) as nb,`Date` FROM `transition` WHERE (`Titre`= 'Poster un nouveau message' OR `Titre`= 'Répondre à un message') AND `Utilisateur` ='".$name."' GROUP BY Date) as t1 Right outer Join (SELECT DISTINCT Date FROM transition) as t2 on t1.Date = t2.Date WHERE t2.date BETWEEN '2009-03-01' AND '2009-03-31'";
 $queryavr = "SELECT nb,t2.Date FROM (SELECT Count(IDTran) as nb,`Date` FROM `transition` WHERE (`Titre`= 'Poster un nouveau message' OR `Titre`= 'Répondre à un message') AND `Utilisateur` ='".$name."' GROUP BY Date) as t1 Right outer Join (SELECT DISTINCT Date FROM transition) as t2 on t1.Date = t2.Date WHERE t2.date BETWEEN '2009-04-01' AND '2009-04-31'";
 $querymai = "SELECT nb,t2.Date FROM (SELECT Count(IDTran) as nb,`Date` FROM `transition` WHERE (`Titre`= 'Poster un nouveau message' OR `Titre`= 'Répondre à un message') AND `Utilisateur` ='".$name."' GROUP BY Date) as t1 Right outer Join (SELECT DISTINCT Date FROM transition) as t2 on t1.Date = t2.Date WHERE t2.date BETWEEN '2009-05-01' AND '2009-05-31'";
-$nbmessfev = array();
+
+$nbmessfev = array();;
 $datemessfev = array();
 $nbmessmars = array();
 $datemessmars= array();
@@ -135,8 +155,62 @@ $comois[] = $comars;
 $comois[] = $coavril;
 $comois[] = $comai;
 
+$queryConsultFeb = "SELECT SUM(nb),MONTH(t2.Date) FROM(SELECT Count(IDTran) as nb,`Date` FROM `transition` WHERE (`Titre`= 'Afficher une structure (cours/forum)') AND `Utilisateur`='".$name."' GROUP BY Date) as t1 Right outer Join (SELECT DISTINCT Date FROM transition) as t2 on t1.Date = t2.Date WHERE t2.date BETWEEN '2009-02-01' AND '2009-02-31'";
+$queryConsultMars = "SELECT SUM(nb),MONTH(t2.Date) FROM(SELECT Count(IDTran) as nb,`Date` FROM `transition` WHERE (`Titre`= 'Afficher une structure (cours/forum)') AND `Utilisateur`='".$name."' GROUP BY Date) as t1 Right outer Join (SELECT DISTINCT Date FROM transition)as t2 on t1.Date = t2.Date WHERE t2.date BETWEEN '2009-03-01' AND '2009-03-31'";
+$queryConsultAvril = "SELECT SUM(nb),MONTH(t2.Date) FROM(SELECT Count(IDTran) as nb,`Date` FROM `transition` WHERE (`Titre`= 'Afficher une structure (cours/forum)') AND `Utilisateur`='".$name."' GROUP BY Date) as t1 Right outer Join (SELECT DISTINCT Date FROM transition) as t2 on t1.Date = t2.Date WHERE t2.date BETWEEN '2009-04-01' AND '2009-04-31'";
+$queryConsultMai = "SELECT SUM(nb),MONTH(t2.Date) FROM(SELECT Count(IDTran) as nb,`Date` FROM `transition` WHERE (`Titre`= 'Afficher une structure (cours/forum)') AND `Utilisateur`='".$name."' GROUP BY Date) as t1 Right outer Join (SELECT DISTINCT Date FROM transition) as t2 on t1.Date = t2.Date WHERE t2.date BETWEEN '2009-05-01' AND '2009-05-31'";
 
+$resultConsultFeb=$conn->query($queryConsultFeb);
+$nbConsultFeb=array();
+$dateConsultFeb=array();
+while($rowConsultFeb=$resultConsultFeb -> fetch_row()){
+	$nbConsultFeb[]=$rowConsultFeb[0];
+	$dateConsultFeb[]=$rowConsultFeb[1];
+}
+$resultConsultMars=$conn->query($queryConsultMars);
+$nbConsultMars=array();
+$dateConsultMars=array();
+while($rowConsultMars=$resultConsultMars -> fetch_row()){
+	$nbConsultMars[]=$rowConsultMars[0];
+	$dateConsultMars[]=$rowConsultMars[1];
+}
+$resultConsultAvril=$conn->query($queryConsultAvril);
+$nbConsultAvril=array();
+$dateConsultAvril=array();
+while($rowConsultAvril=$resultConsultAvril -> fetch_row()){
+	$nbConsultAvril[]=$rowConsultAvril[0];
+	$dateConsultAvril[]=$rowConsultAvril[1];
+}
+$resultConsultMai=$conn->query($queryConsultMai);
+$nbConsultMai=array();
+$dateConsultMai=array();
+while($rowConsultMai=$resultConsultMai -> fetch_row()){
+	$nbConsultMai[]=$rowConsultMai[0];
+	$dateConsultMai[]=$rowConsultMai[1];
+}
 
+$consultfevrier = array();
+$consultmars = array();
+$consultavril = array();
+$consultmai = array();
+
+$consultfevrier[0] = $nbConsultFeb;
+$consultfevrier[1] = $dateConsultFeb;
+
+$consultmars[0] = $nbConsultMars;
+$consultmars[1] = $dateConsultMars;
+
+$consultavril[0] = $nbConsultAvril;
+$consultavril[1] = $dateConsultAvril;
+
+$consultmai[0] = $nbConsultMai;
+$consultmai[1] = $dateConsultMai;
+
+$consultmois = array();
+$consultmois[] = $consultfevrier;
+$consultmois[] = $consultmars;
+$consultmois[] = $consultavril;
+$consultmois[] = $consultmai;
 
 
 ?>

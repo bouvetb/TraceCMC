@@ -1,9 +1,9 @@
-graphco(0);
-function graphco(mois){
-	Highcharts.chart('container4', {
+graphconsult(0);
+function graphconsult(mois){
+	Highcharts.chart('container7', {
 
     title: {
-        text: 'Connexions pendant le mois '
+        text: 'Consultation pendant le mois '
     },
     chart :{
     	width : 800
@@ -11,12 +11,12 @@ function graphco(mois){
 
     yAxis: {
         title: {
-            text: 'Nombres de Connexions'
+            text: 'Nombre de consultation'
         }
     },
 
     xAxis: {
-        categories: tab_co_moi[mois][1],
+        categories: tab_consultMois[mois][1],
         crosshair: true
     },
 
@@ -36,8 +36,8 @@ function graphco(mois){
     },
 
     series: [{
-        name: 'Connexions',
-        data: tab_co_moi[mois][0],
+        name: 'Consultation(s)',
+        data: tab_consultMois[mois][0],
     }],
 
     responsive: {
