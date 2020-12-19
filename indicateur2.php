@@ -44,6 +44,7 @@ include "test.php";
 	</div>
 	<div style="text-align: center;">
 		<div id=container ></div>
+		<p>Cet indicateur indique un pourcentage de participation dans des cours. Dans les données fournies un cours est représenté sous forme d'id forum, nous n'avons pas le nom du cours. Cet indicateur est calculé suivant les différentes intéractions avec ce cours.
 	<script type="text/javascript" src="./chartindicateur2.js"></script>
 	</div>
 	

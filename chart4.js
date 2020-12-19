@@ -3,7 +3,7 @@ function graphco(mois){
 	Highcharts.chart('container4', {
 
     title: {
-        text: 'Connexions pendant le mois '
+        text: 'Connexions pendant le mois : '+intToMonth2(mois)
     },
     chart :{
     	width : 800

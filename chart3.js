@@ -3,7 +3,7 @@ function graphmess(mois){
 	Highcharts.chart('container3', {
 
     title: {
-        text: 'Messages pendant le mois '
+        text: 'Messages pendant le mois : ' + intToMonth2(mois)
     },
     chart :{
     	width : 800

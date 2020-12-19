@@ -1,6 +1,6 @@
 <?php
 $user = "root";
 $pass = "";
-$server = "localhost:3308";
+$server = "localhost";
 $db = "trace_forum";
 ?>

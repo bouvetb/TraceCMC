@@ -29,3 +29,18 @@ function intToMonth(a){
         return "erreur";
     }
 }
+function intToMonth2(a){
+    a=parseInt(a);
+    switch(a){
+        case 0:
+        return "Fevrier";
+        case 1:
+        return "Mars";
+        case 2 :
+        return "Avril";
+        case 3 :
+        return "Mai";
+        default :
+        return "erreur";
+    }
+}

@@ -3,7 +3,7 @@ function graphconsult(mois){
 	Highcharts.chart('container7', {
 
     title: {
-        text: 'Consultation pendant le mois '
+        text: 'Consultation pendant le mois ' +intToMonth2(mois)
     },
     chart :{
     	width : 800
